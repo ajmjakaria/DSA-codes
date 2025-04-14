@@ -5,6 +5,29 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+void bfs(int source, vector<vector<int>> &graph, vector<bool> &visited)
+{
+	queue<int> q;
+	q.push(source);
+	visited[source] = true;
+
+	while(!q.empty())
+	{
+		int u = q.front();
+		q.pop();
+		cout << u << " ";
+
+		for(int i : graph[u])
+		{
+			if(!visited[i])
+			{
+				visited[i] = true;
+				q.push(i);
+			}
+		}
+	}
+}
+
 void bfs_shortestPath(int source, int destination, vector<vector<int>> &graph, vector<int> &dist, vector<int> &parent)
 {
 	queue<int> q;
