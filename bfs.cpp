@@ -67,14 +67,65 @@ void printPath(int source, int destination, vector<int> &parent)
 		cout << i << " ";
 	cout << endl;
 }
+int main()
+{
+	int nodes, edges;
+	cin >> nodes >> edges;
 
+	vector<vector<int>> graph(nodes);
+	vector<bool> visited(nodes, false);
+	vector<int> dist(nodes, INT_MAX);
+	vector<int> parent(nodes, -1);
+
+	//cout << "Enter each edge as two space-separated nodes (u v):\n";
+	for (int i = 0; i < edges; i++)
+	{
+		int u, v;
+		cin >> u >> v;
+		graph[u].push_back(v);
+		graph[v].push_back(u); // remove this line if the graph is directed
+	}
+
+	int source, destination;
+	// input source and destination
+	cin >> source >> destination;
+
+	bfs_shortestPath(source, destination, graph, dist, parent);
+
+	if (dist[destination] == INT_MAX)
+		cout << "No path exists from " << source << " to " << destination << endl;
+	else
+	{
+		cout << "Distance from " << source << " to " << destination << ": " << dist[destination] << endl;
+		printPath(source, destination, parent);
+	}
+
+	return 0;
+}
+/*Sample input:
+6 7
+0 1
+0 2
+1 3
+1 4
+2 4
+4 5
+3 1
+0 5
+
+Sample Output:
+Distance from 0 to 5: 3
+Path from 0 to 5:
+0 1 4 5 
+*/
+/*
 int main()
 {
 	int nodes = 6;
 	vector<vector<int>>graph(nodes);
 	vector<bool> visited(nodes, false);
 	vector<int> dist(nodes, INT_MAX);
-    vector<int> parent(nodes, -1);
+        vector<int> parent(nodes, -1);
 
 	//adjacency list
 	graph[0] = {1, 2};
@@ -93,3 +144,4 @@ int main()
 	printPath(0, 5, parent);
 	return 0;
 }
+*/
