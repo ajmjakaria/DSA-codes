@@ -2,8 +2,7 @@
 using namespace std;
 
 #define MAX 100
-
-int stack[MAX];
+int myStack[MAX];
 int top = -1;
 
 int isEmpty() {
@@ -13,7 +12,7 @@ int isEmpty() {
 }
 
 int isFull() {
-    return top == MAX - 1;
+    return top == MAX - 1; //99
 }
 
 void push(int value) {
@@ -21,7 +20,7 @@ void push(int value) {
         printf("Stack Overflow\n");
         return;
     }
-    stack[++top] = value;
+    myStack[++top] = value;
 }
 
 void pop() {
@@ -37,7 +36,7 @@ int peek() {
         printf("Stack is empty\n");
         return -1;
     }
-    return stack[top];
+    return myStack[top];
 }
 
 void display() {
@@ -46,7 +45,7 @@ void display() {
         return;
     }
     for (int i = top; i >= 0; i--) {
-        printf("%d\n", stack[i]);
+        printf("%d\n", myStack[i]);
     }
 }
 
