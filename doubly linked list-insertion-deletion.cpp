@@ -65,7 +65,7 @@ void insert_node(int index, int data)
 	}
 	//insert at an specific postion
 	Node* current_node = root;
-	for(int i = 0; i < index - 1 && current_node != nullptr; i++){
+	for(int i = 0; i < index && current_node != nullptr; i++){
 	    current_node = current_node->next;
 	}
 	if(current_node == nullptr)
